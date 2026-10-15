@@ -68,17 +68,10 @@ export function BoardView() {
 
     return orderedIds.map((id) => {
       const def = bucketDefs[id]
-      const events = buckets.get(id) ?? []
-      if (id === "this-week") {
-        events.sort(
-          (a, b) =>
-            a.dateInfo.firstDay - b.dateInfo.firstDay || a.dateInfo.startMs - b.dateInfo.startMs,
-        )
-      }
       return {
         id,
         title: def.title,
-        events,
+        events: buckets.get(id) ?? [],
         showDate: def.showDate,
         isToday: def.isToday,
       } satisfies Bucket

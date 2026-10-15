@@ -100,14 +100,7 @@ function BoardColumn({
           }
         ),
         /* @__PURE__ */ jsxs("div", { className: "flex flex-col overflow-y-auto grow", children: [
-          events.map((event) => /* @__PURE__ */ jsx(
-            BoardCard,
-            {
-              event,
-              showDate
-            },
-            `${event.calendar_slug}::${event.id}`
-          )),
+          events.map((event) => /* @__PURE__ */ jsx(BoardCard, { event, showDate }, event.key)),
           events.length === 0 && /* @__PURE__ */ jsx(
             "div",
             {
@@ -158,16 +151,10 @@ function BoardView() {
     const orderedIds = ["yesterday", "today", "tomorrow", "this-week"];
     return orderedIds.map((id) => {
       const def = bucketDefs[id];
-      const events = buckets.get(id) ?? [];
-      if (id === "this-week") {
-        events.sort(
-          (a, b) => a.dateInfo.firstDay - b.dateInfo.firstDay || a.dateInfo.startMs - b.dateInfo.startMs
-        );
-      }
       return {
         id,
         title: def.title,
-        events,
+        events: buckets.get(id) ?? [],
         showDate: def.showDate,
         isToday: def.isToday
       };

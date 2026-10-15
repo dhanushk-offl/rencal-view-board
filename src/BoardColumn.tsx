@@ -49,11 +49,7 @@ export function BoardColumn({
       {/* Event list */}
       <div className="flex flex-col overflow-y-auto grow">
         {events.map((event) => (
-          <BoardCard
-            key={`${event.calendar_slug}::${event.id}`}
-            event={event}
-            showDate={showDate}
-          />
+          <BoardCard key={event.key} event={event} showDate={showDate} />
         ))}
 
         {events.length === 0 && (
