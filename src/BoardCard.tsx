@@ -1,4 +1,3 @@
-import type { MouseEvent } from "react"
 import { memo } from "react"
 
 import {
@@ -10,8 +9,7 @@ import {
   isSameDay,
   UntitledEventText,
   useDisplaySettings,
-  useEventAppearance,
-  useEventSelection,
+  useEventProps,
 } from "@rencal/plugin-api"
 
 export const BoardCard = memo(function BoardCard({
@@ -22,31 +20,18 @@ export const BoardCard = memo(function BoardCard({
   showDate?: boolean
 }) {
   const { timeFormat } = useDisplaySettings()
-  const { style, rsvp } = useEventAppearance(event)
-  const selection = useEventSelection()
-  const highlighted = selection.isSelected(event)
+  const eventProps = useEventProps(event)
 
   const formatRangeDate = (date: CalendarEvent["start"]): string => {
     const plainDate = dateInViewerZone(date)
     return `${formatMonth(plainDate, "short")} ${plainDate.day},`
   }
 
-  const handleClick = (e: MouseEvent<HTMLDivElement>) => {
-    e.stopPropagation()
-    selection.toggle(event, e.currentTarget)
-  }
-
   return (
     <div
-      data-slot="calendar-event"
+      {...eventProps}
       data-view="board"
-      data-kind={event.start.kind === "date" ? "all-day" : "timed"}
-      data-selected={highlighted || undefined}
-      data-rsvp={rsvp ?? undefined}
       className="cursor-default py-1.5 border-b border-border last:border-b-0 outline-none"
-      data-event-clickable
-      style={style}
-      onClick={handleClick}
     >
       <div className="flex gap-3 pl-3 pr-2">
         {/* Left accent bar — no rounding, matches event blocks in other views */}

@@ -1,35 +1,23 @@
 import { jsx, jsxs } from "react/jsx-runtime";
 import { Temporal } from "@js-temporal/polyfill";
 import { memo, useMemo } from "react";
-import { useDisplaySettings, useEventAppearance, useEventSelection, formatShortDate, UntitledEventText, isSameDay, formatTime, dateInViewerZone, formatMonth, cn, useToday, startOfWeek, useEventsInRange } from "@rencal/plugin-api";
+import { useDisplaySettings, useEventProps, formatShortDate, UntitledEventText, isSameDay, formatTime, dateInViewerZone, formatMonth, cn, useToday, startOfWeek, useEventsInRange } from "@rencal/plugin-api";
 const BoardCard = memo(function BoardCard2({
   event,
   showDate
 }) {
   const { timeFormat } = useDisplaySettings();
-  const { style, rsvp } = useEventAppearance(event);
-  const selection = useEventSelection();
-  const highlighted = selection.isSelected(event);
+  const eventProps = useEventProps(event);
   const formatRangeDate = (date) => {
     const plainDate = dateInViewerZone(date);
     return `${formatMonth(plainDate, "short")} ${plainDate.day},`;
   };
-  const handleClick = (e) => {
-    e.stopPropagation();
-    selection.toggle(event, e.currentTarget);
-  };
   return /* @__PURE__ */ jsx(
     "div",
     {
-      "data-slot": "calendar-event",
+      ...eventProps,
       "data-view": "board",
-      "data-kind": event.start.kind === "date" ? "all-day" : "timed",
-      "data-selected": highlighted || void 0,
-      "data-rsvp": rsvp ?? void 0,
       className: "cursor-default py-1.5 border-b border-border last:border-b-0 outline-none",
-      "data-event-clickable": true,
-      style,
-      onClick: handleClick,
       children: /* @__PURE__ */ jsxs("div", { className: "flex gap-3 pl-3 pr-2", children: [
         /* @__PURE__ */ jsx("div", { "data-slot": "calendar-event-color-marker", className: "w-[3px] shrink-0 self-stretch" }),
         /* @__PURE__ */ jsxs("div", { className: "min-w-0", children: [
