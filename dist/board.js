@@ -1,7 +1,7 @@
 import { jsx, jsxs } from "react/jsx-runtime";
 import { Temporal } from "@js-temporal/polyfill";
 import { memo, useMemo } from "react";
-import { useDisplaySettings, useEventAppearance, useEventSelection, formatShortDate, UntitledEventText, isSameDay, formatTime, dateInViewerZone, formatMonth, cn, useEvents, useToday, startOfWeek } from "@rencal/plugin-api";
+import { useDisplaySettings, useEventAppearance, useEventSelection, formatShortDate, UntitledEventText, isSameDay, formatTime, dateInViewerZone, formatMonth, cn, useToday, startOfWeek, useEventsInRange } from "@rencal/plugin-api";
 const BoardCard = memo(function BoardCard2({
   event,
   showDate
@@ -115,13 +115,18 @@ function BoardColumn({
   );
 }
 function BoardView() {
-  const calendarEvents = useEvents();
   const { firstDayOfWeek } = useDisplaySettings();
   const today = useToday();
+  const { yesterday, endOfWeek } = useMemo(
+    () => ({
+      yesterday: today.subtract({ days: 1 }),
+      endOfWeek: startOfWeek(today, firstDayOfWeek).add({ days: 6 })
+    }),
+    [today, firstDayOfWeek]
+  );
+  const calendarEvents = useEventsInRange(yesterday, endOfWeek.add({ days: 1 }));
   const columns = useMemo(() => {
-    const yesterday = today.subtract({ days: 1 });
     const tomorrow = today.add({ days: 1 });
-    const endOfWeek = startOfWeek(today, firstDayOfWeek).add({ days: 6 });
     function getBucketId(pd) {
       if (pd.equals(yesterday)) return "yesterday";
       if (pd.equals(today)) return "today";
@@ -159,7 +164,7 @@ function BoardView() {
         isToday: def.isToday
       };
     });
-  }, [calendarEvents, today, firstDayOfWeek]);
+  }, [calendarEvents, today, yesterday, endOfWeek]);
   return /* @__PURE__ */ jsx("div", { className: "flex h-full overflow-hidden", children: columns.map((col, i) => /* @__PURE__ */ jsx(
     BoardColumn,
     {

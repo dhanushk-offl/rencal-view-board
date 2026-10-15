@@ -6,7 +6,7 @@ import {
   dateInViewerZone,
   startOfWeek,
   useDisplaySettings,
-  useEvents,
+  useEventsInRange,
   useToday,
 } from "@rencal/plugin-api"
 
@@ -21,14 +21,19 @@ interface Bucket {
 }
 
 export function BoardView() {
-  const calendarEvents = useEvents()
   const { firstDayOfWeek } = useDisplaySettings()
   const today = useToday()
+  const { yesterday, endOfWeek } = useMemo(
+    () => ({
+      yesterday: today.subtract({ days: 1 }),
+      endOfWeek: startOfWeek(today, firstDayOfWeek).add({ days: 6 }),
+    }),
+    [today, firstDayOfWeek],
+  )
+  const calendarEvents = useEventsInRange(yesterday, endOfWeek.add({ days: 1 }))
 
   const columns = useMemo(() => {
-    const yesterday = today.subtract({ days: 1 })
     const tomorrow = today.add({ days: 1 })
-    const endOfWeek = startOfWeek(today, firstDayOfWeek).add({ days: 6 })
 
     function getBucketId(pd: Temporal.PlainDate): string {
       if (pd.equals(yesterday)) return "yesterday"
@@ -76,7 +81,7 @@ export function BoardView() {
         isToday: def.isToday,
       } satisfies Bucket
     })
-  }, [calendarEvents, today, firstDayOfWeek])
+  }, [calendarEvents, today, yesterday, endOfWeek])
 
   return (
     <div className="flex h-full overflow-hidden">
