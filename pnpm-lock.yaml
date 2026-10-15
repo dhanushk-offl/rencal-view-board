@@ -13,7 +13,7 @@ importers:
         version: 0.5.1
       '@rencal/plugin-api':
         specifier: file:../rencal/packages/plugin-api
-        version: file:../rencal/packages/plugin-api(@js-temporal/polyfill@0.5.1)(react@19.2.0)
+        version: file:../rencal/packages/plugin-api(@js-temporal/polyfill@0.5.1)(react-dom@19.3.1(react@19.2.0))(react@19.2.0)
       '@tailwindcss/vite':
         specifier: 4.1.17
         version: 4.1.17(vite@7.2.2(jiti@2.7.0)(lightningcss@1.30.2))
@@ -223,6 +223,7 @@ packages:
     peerDependencies:
       '@js-temporal/polyfill': ^0.5.1
       react: ^19.2.0
+      react-dom: ^19.2.0
 
   '@rollup/rollup-android-arm-eabi@4.64.6':
     resolution: {integrity: sha512-FkO19Fowv/OQeJZPVfdetJaI3/VpbZmBsnmAlR/rQ+b3QwfiGQiOpVegpSRH331kelvHTVw9hXYG3DwjAaRzyQ==}
@@ -595,6 +596,11 @@ packages:
     resolution: {integrity: sha512-zkd+e9S1AQHhmaBKye9zlFHWjOwVgqXl1q3ECYy8561K7qxR2cREf/STLskulBFd78k6AOFeA+ff1TtEzk9bAA==}
     engines: {node: ^10 || ^12 || >=14}
 
+  react-dom@19.3.1:
+    resolution: {integrity: sha512-Y0bARz53lhEC1NMCASs0/j+faB/zqt3R8hpvg1e8+61ZVJ4UL0UdC4cBbXfZMcIuhrfgeILTLe+ZeBCavQPtKQ==}
+    peerDependencies:
+      react: ^19.3.1
+
   react@19.2.0:
     resolution: {integrity: sha512-tmbWg6W31tQLeB5cdIBOicJDJRR2KzXsV7uSK9iNfLWQ5bIZfxuPEHp7M8wiHyHnn0DD1i7w3Zmin0FtkrwoCQ==}
     engines: {node: '>=0.10.0'}
@@ -603,6 +609,9 @@ packages:
     resolution: {integrity: sha512-fX1Vy+UNKdXn+xKDnu/HBXbHVr1AY8cSdQj9BU4kLv5aFCMqGpvrVbyUMmjN3DdzWhSAuTbcX8PCNEVaumthYA==}
     engines: {node: '>=18.0.0', npm: '>=8.0.0'}
     hasBin: true
+
+  scheduler@0.28.0:
+    resolution: {integrity: sha512-juorfCmIkIw8tT+p5BXSm6PJjQF/ycEYmKyzURCIt/RaZIhL+PulbQ9Yu2z1HdOJDdqDTlxA1+xKBmHXJsczAw==}
 
   source-map-js@1.2.2:
     resolution: {integrity: sha512-KGj/8Y43x35aZVDtt+J4mK1hoLGHULMYfSkODJNQjNDC3oW1PqPoxMwo0pLUsWM/UEGzON/NxeHywEfNXNP3Vw==}
@@ -770,10 +779,11 @@ snapshots:
   '@napi-rs/lzma-linux-x64-gnu@1.5.1':
     optional: true
 
-  '@rencal/plugin-api@file:../rencal/packages/plugin-api(@js-temporal/polyfill@0.5.1)(react@19.2.0)':
+  '@rencal/plugin-api@file:../rencal/packages/plugin-api(@js-temporal/polyfill@0.5.1)(react-dom@19.3.1(react@19.2.0))(react@19.2.0)':
     dependencies:
       '@js-temporal/polyfill': 0.5.1
       react: 19.2.0
+      react-dom: 19.3.1(react@19.2.0)
 
   '@rollup/rollup-android-arm-eabi@4.64.6':
     optional: true
@@ -1040,6 +1050,11 @@ snapshots:
       picocolors: 1.1.1
       source-map-js: 1.2.2
 
+  react-dom@19.3.1(react@19.2.0):
+    dependencies:
+      react: 19.2.0
+      scheduler: 0.28.0
+
   react@19.2.0: {}
 
   rollup@4.64.6:
@@ -1073,6 +1088,8 @@ snapshots:
       '@rollup/rollup-win32-x64-gnu': 4.64.6
       '@rollup/rollup-win32-x64-msvc': 4.64.6
       fsevents: 2.3.3
+
+  scheduler@0.28.0: {}
 
   source-map-js@1.2.2: {}
 
