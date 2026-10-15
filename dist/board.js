@@ -1,7 +1,6 @@
 import { jsx, jsxs } from "react/jsx-runtime";
-import { Temporal } from "@js-temporal/polyfill";
 import { memo, useMemo } from "react";
-import { useDisplaySettings, useEventProps, formatShortDate, UntitledEventText, isSameDay, formatTime, dateInViewerZone, formatMonth, cn, useToday, startOfWeek, useEventsInRange } from "@rencal/plugin-api";
+import { useDisplaySettings, useEventProps, formatShortDate, UntitledEventText, isSameDay, formatTime, dateInViewerZone, formatMonth, cn, useToday, startOfWeek, useEventsInRange, Temporal } from "@rencomputer/rencal-sdk";
 const BoardCard = memo(function BoardCard2({
   event,
   showDate

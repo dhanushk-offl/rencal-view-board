@@ -10,7 +10,7 @@ import {
   UntitledEventText,
   useDisplaySettings,
   useEventProps,
-} from "@rencal/plugin-api"
+} from "@rencomputer/rencal-sdk"
 
 export const BoardCard = memo(function BoardCard({
   event,

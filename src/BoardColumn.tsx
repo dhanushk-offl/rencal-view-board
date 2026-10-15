@@ -1,4 +1,4 @@
-import { type CalendarEvent, cn } from "@rencal/plugin-api"
+import { type CalendarEvent, cn } from "@rencomputer/rencal-sdk"
 
 import { BoardCard } from "./BoardCard"
 

@@ -201,17 +201,6 @@
   }
 }
 
-@layer components {
-  :where([data-slot="calendar-event"][data-view="board"]):not([data-selected]):hover {
-    background: var(--hover);
-  }
-
-  :where([data-slot="calendar-event"][data-view="board"])[data-selected] {
-    background: var(--selected);
-    color: var(--selected-foreground);
-  }
-}
-
 @property --tw-border-style {
   syntax: "*";
   inherits: false;
@@ -251,4 +240,15 @@
 @property --tw-numeric-fraction {
   syntax: "*";
   inherits: false
+}
+/* Board cards are bar-and-text events, like timed month and agenda events. */
+@layer components {
+  :where([data-slot="calendar-event"][data-view="board"]):not([data-selected]):hover {
+    background: var(--hover);
+  }
+
+  :where([data-slot="calendar-event"][data-view="board"])[data-selected] {
+    background: var(--selected);
+    color: var(--selected-foreground);
+  }
 }

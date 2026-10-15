@@ -3,18 +3,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "tsc && vite build",
-    "dev": "vite build --watch",
-    "typecheck": "tsc"
+    "build": "rencal-sdk build",
+    "dev": "rencal-sdk dev"
   },
   "devDependencies": {
-    "@js-temporal/polyfill": "0.5.1",
-    "@rencal/plugin-api": "file:../rencal/packages/plugin-api",
-    "@tailwindcss/vite": "4.1.17",
-    "@types/react": "19.2.4",
-    "react": "19.2.0",
-    "tailwindcss": "4.1.17",
-    "typescript": "5.8.3",
-    "vite": "7.2.2"
+    "@rencomputer/rencal-sdk": "file:../rencal/packages/sdk",
+    "@types/react": "19.2.4"
   }
 }

@@ -1,16 +1,17 @@
-import { Temporal } from "@js-temporal/polyfill"
 import { useMemo } from "react"
 
 import {
   type CalendarEvent,
   dateInViewerZone,
   startOfWeek,
+  Temporal,
   useDisplaySettings,
   useEventsInRange,
   useToday,
-} from "@rencal/plugin-api"
+} from "@rencomputer/rencal-sdk"
 
 import { BoardColumn } from "./BoardColumn"
+import "./styles.css"
 
 interface Bucket {
   id: string
@@ -20,7 +21,7 @@ interface Bucket {
   isToday: boolean
 }
 
-export function BoardView() {
+export default function BoardView() {
   const { firstDayOfWeek } = useDisplaySettings()
   const today = useToday()
   const { yesterday, endOfWeek } = useMemo(

@@ -12,7 +12,7 @@ plugins = ["t4t5/rencal-view-board"]
 
 ## Development
 
-The view is built against `@rencal/plugin-api`, which comes from a renCal checkout next to this one (`../rencal`). renCal provides React, Temporal and the plugin API at runtime, so the build leaves them out.
+The view is built with [`@rencomputer/rencal-sdk`](https://www.npmjs.com/package/@rencomputer/rencal-sdk), which provides the plugin API's types and the build: `rencal-sdk build` bundles `src/index.tsx` to the paths in `rencal-plugin.toml`.
 
 ```sh
 pnpm install
