@@ -9,8 +9,8 @@ importers:
   .:
     devDependencies:
       '@rencomputer/rencal-sdk':
-        specifier: file:../rencal/packages/sdk
-        version: file:../rencal/packages/sdk(@types/react@19.2.4)(jiti@2.7.0)(lightningcss@1.30.2)
+        specifier: ^0.1.0
+        version: 0.1.0(@types/react@19.2.4)(jiti@2.7.0)(lightningcss@1.30.2)
       '@types/react':
         specifier: 19.2.4
         version: 19.2.4
@@ -200,8 +200,8 @@ packages:
     os: [linux]
     libc: [glibc]
 
-  '@rencomputer/rencal-sdk@file:../rencal/packages/sdk':
-    resolution: {directory: ../rencal/packages/sdk, type: directory}
+  '@rencomputer/rencal-sdk@0.1.0':
+    resolution: {integrity: sha512-5bN3a0bL51h3LiYkK+6MHVXOLOPDmWtX8QiFc1V12qG8OU2XxeAAkdGt37TxJB93zbObpQJpt5js2WqYtaYbog==}
     hasBin: true
     peerDependencies:
       '@types/react': ^19.2.0
@@ -752,7 +752,7 @@ snapshots:
   '@napi-rs/lzma-linux-x64-gnu@1.5.1':
     optional: true
 
-  '@rencomputer/rencal-sdk@file:../rencal/packages/sdk(@types/react@19.2.4)(jiti@2.7.0)(lightningcss@1.30.2)':
+  '@rencomputer/rencal-sdk@0.1.0(@types/react@19.2.4)(jiti@2.7.0)(lightningcss@1.30.2)':
     dependencies:
       '@js-temporal/polyfill': 0.5.1
       '@tailwindcss/vite': 4.1.17(vite@7.2.2(jiti@2.7.0)(lightningcss@1.30.2))

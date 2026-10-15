@@ -7,7 +7,7 @@
     "dev": "rencal-sdk dev"
   },
   "devDependencies": {
-    "@rencomputer/rencal-sdk": "file:../rencal/packages/sdk",
+    "@rencomputer/rencal-sdk": "^0.1.0",
     "@types/react": "19.2.4"
   }
 }
