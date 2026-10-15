@@ -1,0 +1,19 @@
+/* Utilities for the classes this plugin uses, against renCal's design tokens.
+   renCal already provides the base styles and theme variables. */
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+@import "@rencal/plugin-api/theme.css";
+
+@source "./";
+
+/* Board cards are bar-and-text events, like timed month and agenda events. */
+@layer components {
+  :where([data-slot="calendar-event"][data-view="board"]):not([data-selected]):hover {
+    background: var(--hover);
+  }
+
+  :where([data-slot="calendar-event"][data-view="board"])[data-selected] {
+    background: var(--selected);
+    color: var(--selected-foreground);
+  }
+}

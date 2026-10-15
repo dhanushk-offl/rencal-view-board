@@ -1,0 +1,11 @@
+id = "t4t5.board"
+name = "Board"
+description = "A board view with columns for yesterday, today, tomorrow and the rest of the week."
+min_rencal_version = "0.9.0"
+
+[[contributes.views]]
+id = "board"
+name = "Board"
+script = "dist/board.js"
+css = "dist/board.css"
+shortcut = "b"
