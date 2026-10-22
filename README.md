@@ -25,4 +25,15 @@ Declare the checkout in `plugins.toml` to load it into renCal; edits reload whil
 plugins = ["~/dev/ren/rencal-view-board"]
 ```
 
-Commit `dist/` with your changes: renCal installs the built files straight from the repository.
+`dist/` is not committed. renCal installs the built files from the latest GitHub release.
+
+## Releasing
+
+Push a version tag:
+
+```sh
+git tag v0.1.0
+git push origin v0.1.0
+```
+
+The [release workflow](.github/workflows/release.yml) builds the view and creates a draft release with `dist/board.js` and `dist/board.css` attached. Check the draft on GitHub and publish it; renCal installs the latest published release and shows its tag as the version.
