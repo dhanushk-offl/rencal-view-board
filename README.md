@@ -36,4 +36,4 @@ git tag v0.1.0
 git push origin v0.1.0
 ```
 
-The [release workflow](.github/workflows/release.yml) builds the view and creates a draft release with `dist/board.js` and `dist/board.css` attached. Check the draft on GitHub and publish it; renCal installs the latest published release and shows its tag as the version.
+The [release workflow](.github/workflows/release.yml) builds the view and publishes a release with `dist/board.js` and `dist/board.css` attached for every `v*` tag. renCal installs the latest release and shows its tag as the version.
