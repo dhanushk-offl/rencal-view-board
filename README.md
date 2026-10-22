@@ -1,6 +1,8 @@
 # renCal Board view
 
-A board view for [renCal](https://rencal.org) with columns for yesterday, today, tomorrow and the rest of the week. Press <kbd>b</kbd> to open it.
+A board view for [renCal](https://rencal.org) with columns for yesterday, today, tomorrow and the rest of the week.
+
+![Board view in renCal](screenshot.png)
 
 ## Installation
 
