@@ -1,6 +1,6 @@
 id = "t4t5.board"
-name = "Board"
-description = "A board view with columns for yesterday, today, tomorrow and the rest of the week."
+name = "Board view"
+description = "A kanban-style board view for your events"
 min_rencal_version = "0.9.0"
 
 [[contributes.views]]

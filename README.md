@@ -2,7 +2,7 @@
 
 A board view for [renCal](https://rencal.org) with columns for yesterday, today, tomorrow and the rest of the week.
 
-![Board view in renCal](screenshot.png)
+![Board view in renCal](preview.png)
 
 ## Installation
 
