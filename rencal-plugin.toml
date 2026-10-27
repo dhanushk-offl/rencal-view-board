@@ -1,5 +1,5 @@
 id = "t4t5.board"
-name = "Board view"
+name = "Board View"
 description = "A kanban-style board view for your events"
 min_rencal_version = "0.9.0"
 
