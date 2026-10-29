@@ -9,7 +9,7 @@ A board view for [renCal](https://rencal.org) with columns for yesterday, today,
 Add the repository to `~/.config/rencal/plugins.toml`:
 
 ```toml
-plugins = ["t4t5/rencal-view-board"]
+plugins = ["dhanushk-offl/rencal-view-board"]
 ```
 
 ## Development
